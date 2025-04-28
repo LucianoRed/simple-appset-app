@@ -1,0 +1,14 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: debugocp-route
+  namespace: debugocp
+spec:
+  to:
+    kind: Service
+    name: debugocp-service
+  port:
+    targetPort: 8080 # a mesma porta do container
+  tls:
+    termination: edge
+  wildcardPolicy: None
