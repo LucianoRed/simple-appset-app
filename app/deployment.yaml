@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: debugocp
+  namespace: debugocp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: debugocp
+  template:
+    metadata:
+      labels:
+        app: debugocp
+    spec:
+      serviceAccountName: debugocp-sa
+      containers:
+      - name: debugocp
+        image: docker.io/lasher/debugocp:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080 # Mude se a sua imagem escutar outra porta
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
