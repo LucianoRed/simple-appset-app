@@ -13,7 +13,6 @@ spec:
       labels:
         app: debugocp
     spec:
-      serviceAccountName: debugocp-sa
       containers:
       - name: debugocp
         image: docker.io/lasher/debugocp:latest
